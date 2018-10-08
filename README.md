@@ -20,7 +20,37 @@ Sessions stitching between App and AMP traffic is achieved by utilizing a combin
 
 
 ## Passing parameters from AMP to App
-[AMP Variable Substitution is]
+[AMP Variable Substitution](https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md) can be utilized to pass necessary parameters from AMP to App. Parameters such as **gclid** are required to report conversions and **client id** is required to stitch the GA sessions once user is automatically redirected from amp to app. Following code snippet provides implementation on how to pass query parameters: 
+
+```
+<a href="/login" data-amp-replace="CLIENT_ID QUERY_PARAM" data-amp-addparams="cid=CLIENT_ID(AMP_ECID_GOOGLE)&gclid=QUERY_PARAM(gclid)">
+
+```
+Client ID is stored in AMP_ECID_GOOGLE cookie. For inorganic clicks, gclid is present in the AMP page URL. QUERY_PARAM is utilized to extract from AMP URL and append it to outgoing URL. 
+
+It is also recommended to create a custom dimension to be able to filter conversions happening due to AMP. This will include conversions happening in web as well as app. Google Analytics can be extended for custom dimension by specifying extraURLparams as follows:
+
+```
+<amp-analytics type="googleanalytics">
+<script type="application/json">
+{
+  "vars": {
+    "account": "UA-XXXXX-Y"
+  },
+  "extraUrlParams": {
+    ***"cd3": "AMP"***
+  },
+  "triggers": {
+    "trackPageviewWithCustomData": {
+      "on": "visible",
+      "request": "pageview"
+    }
+  }
+}
+</script>
+</amp-analytics>
+```
+
 
 
 
