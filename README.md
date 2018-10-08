@@ -28,7 +28,7 @@ Sessions stitching between App and AMP traffic is achieved by utilizing a combin
 ```
 Client ID is stored in AMP_ECID_GOOGLE cookie. For inorganic clicks, gclid is present in the AMP page URL. QUERY_PARAM is utilized to extract from AMP URL and append it to outgoing URL. 
 
-It is also recommended to create a custom dimension to be able to filter conversions happening due to AMP. This will include conversions happening in web as well as app. Google Analytics can be extended for custom dimension by specifying extraURLparams as follows:
+It is also recommended to create a custom dimension to be able to filter conversions happening due to AMP. This will include conversions happening in web as well as app. Google Analytics can be extended for custom dimension by specifying extraUrlParams as follows:
 
 ```
 <amp-analytics type="googleanalytics">
@@ -38,7 +38,7 @@ It is also recommended to create a custom dimension to be able to filter convers
     "account": "UA-XXXXX-Y"
   },
   "extraUrlParams": {
-    ***"cd3": "AMP"***
+    "cd1": "AMP"
   },
   "triggers": {
     "trackPageviewWithCustomData": {
