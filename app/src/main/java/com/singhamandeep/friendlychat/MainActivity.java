@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private Boolean isAmp(){
+    private boolean isAmp(){
         if(getIntent() != null && getIntent().getData() != null){
             return "true".equals(getIntent().getData().getQueryParameter("amp"));
         }
@@ -345,7 +345,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setParamsFromUrl(HitBuilders.HitBuilder builder, Boolean forWeb) {
 
-        builder.setCustomDimension(1, isAmp().toString());
+        if(isAmp()){
+            builder.setCustomDimension(1, "true");
+        }
 
         if(getIntent() != null && getIntent().getData() != null){
 
