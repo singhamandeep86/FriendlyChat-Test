@@ -18,6 +18,12 @@ However, FriendlyChat-Test is also designed to stitch sessions between traffic t
 
 Sessions stitching between App and AMP traffic is achieved by utilizing a combination of [Google AMP Client ID API]( https://support.google.com/analytics/answer/7486764?hl=en) and [AMP Linker]( https://amphtml.wordpress.com/2018/09/17/measuring-user-journeys-across-the-amp-cache-and-your-website/). Check the setup section for details
 
+
+## Passing parameters from AMP to App
+[AMP Variable Substitution is]
+
+
+
 ## Setup
 
 Requires Firebase, Appslfyer, Google Analytics and an AMP property.
