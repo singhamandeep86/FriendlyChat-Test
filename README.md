@@ -8,7 +8,7 @@ This version also stiches sessions between AMP pages and app views on Google Ana
 
 ## Overview
 
-FriendlyChat-Test is an app that allows users to send and receive text in realtime across platforms. It is also designed to receive Android App Links from www.codellect.org.
+FriendlyChat-Test is an app that allows users to send and receive text in realtime across platforms. It models every message send as a dummy ecommerce purchase event. It is also designed to receive traffic from www.codellect.org via Android App Links.
 
 A user session can start on this website via a visit to a normal web-page or an AMP page. While clicking on a link to the AMP page from Google Search would always open the page in the [Google AMP viewer](https://support.google.com/websearch/answer/7220196), any further clicks on a codellect.org link will lead user to FriendlyChat-Test app. Clicking on a non-AMP codellect.org link from Google Search would also lead the user directly to FriendlyChat-Test app.
 
