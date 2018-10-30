@@ -256,14 +256,17 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
 
         //Track screenview on GA
-        mAppTracker.setScreenName(TAG);
         HitBuilders.ScreenViewBuilder builder = new HitBuilders.ScreenViewBuilder();
-        setParamsFromUrl(builder);
-        mAppTracker.send(builder.build());
 
+        //Send Hit to Web Property for AMP traffic, to App Property for all other sources
         if(isAmp()){
+            mWebTracker.setScreenName(TAG);
             setParamsFromUrl(builder, true);
             mWebTracker.send(builder.build());
+        } else {
+            mAppTracker.setScreenName(TAG);
+            setParamsFromUrl(builder);
+            mAppTracker.send(builder.build());
         }
     }
 
@@ -345,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setParamsFromUrl(HitBuilders.HitBuilder builder, Boolean forWeb) {
 
-        if(isAmp()){
+        if(isAmp() && forWeb){
             builder.setCustomDimension(1, "true");
         }
 
@@ -393,12 +396,14 @@ public class MainActivity extends AppCompatActivity {
                         .setTransactionId(Integer.toString(new Random().nextInt(1000000)))
                         .setTransactionRevenue(purchase_value)
                 );
-        setParamsFromUrl(builder);
-        mAppTracker.send(builder.build());
 
+        //Send Hit to Web Property for AMP traffic, to App Property for all other sources
         if(isAmp()){
             setParamsFromUrl(builder, true);
             mWebTracker.send(builder.build());
+        } else{
+            setParamsFromUrl(builder);
+            mAppTracker.send(builder.build());
         }
     }
 }

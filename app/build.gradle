@@ -17,8 +17,8 @@ android {
         applicationId "com.singhamandeep.friendlychat"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 12
-        versionName "11.1"
+        versionCode 14
+        versionName "11.2"
     }
     buildTypes {
         release {
