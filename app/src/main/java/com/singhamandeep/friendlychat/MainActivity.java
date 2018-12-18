@@ -361,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
                     builder.set("&cid", getIntent().getData().getQueryParameter("cid"));
                 }
 
-                builder.set("&dl", getIntent().getData().toString());
+                builder.set("&dl", getIntent().getData().getPath());
             }
         }
     }
